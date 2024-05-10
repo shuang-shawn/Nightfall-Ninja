@@ -10,6 +10,7 @@ public class PlayerWallSlideState : PlayerState
 
     public override void Enter()
     {
+        Debug.Log("enter wall slide");
         base.Enter();
     }
 
@@ -21,5 +22,25 @@ public class PlayerWallSlideState : PlayerState
     public override void Update()
     {
         base.Update();
+        if (yInput < 0)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+
+        } else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y * .7f);
+        }
+
+
+        if (xInput != 0 && xInput != player.facingDir)
+        {
+            stateMachine.ChangeState(player.airState);
+        }
+
+        if (player.IsGroundDetected() && rb.velocity.y ==0)
+        {
+            Debug.Log("inside wallslide, moving to idle");
+           stateMachine.ChangeState(player.idleState);
+        }
     }
 }

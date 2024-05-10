@@ -22,7 +22,12 @@ public class PlayerIdleState : PlayerGroundState
     {
         base.Update();
 
-        if(xInput != 0)
+        if(xInput == player.facingDir && player.isWallDetected())
+        {
+            return;
+        }
+
+        if (xInput != 0)
         {
             stateMachine.ChangeState(player.moveState);
         }

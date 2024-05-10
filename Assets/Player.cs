@@ -65,8 +65,6 @@ public class Player : MonoBehaviour
     {
         stateMachine.currentState.Update();
         CheckForDashInput();
-
-
     }
 
     public void CheckForDashInput()
@@ -92,6 +90,8 @@ public class Player : MonoBehaviour
     }
 
     public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+
+    public bool isWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
 
 
     private void OnDrawGizmos()
