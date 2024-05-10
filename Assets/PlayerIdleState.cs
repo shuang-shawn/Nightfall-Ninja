@@ -11,6 +11,7 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        rb.velocity = Vector2.zero;
     }
 
     public override void Exit()
@@ -24,11 +25,13 @@ public class PlayerIdleState : PlayerGroundState
 
         if(xInput == player.facingDir && player.isWallDetected())
         {
+            Debug.Log("realy return from idle staet");
             return;
         }
 
-        if (xInput != 0)
+        else if (xInput != 0)
         {
+            Debug.Log("somehow still entereing move");
             stateMachine.ChangeState(player.moveState);
         }
         

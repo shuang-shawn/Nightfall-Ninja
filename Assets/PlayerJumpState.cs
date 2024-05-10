@@ -30,7 +30,7 @@ public class PlayerJumpState : PlayerState
         player.FlipController(xInput);
         if (player.isWallDetected())
         {
-            stateMachine.ChangeState(player.wallSlideState);
+            stateMachine.ChangeState(player.wallSlide);
         }
     }
 }

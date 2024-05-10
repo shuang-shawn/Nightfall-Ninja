@@ -30,9 +30,9 @@ public class PlayerDashState : PlayerState
 
         Debug.Log("doing dash");
 
-        if (player.isWallDetected())
+        if (player.isWallDetected() && !player.IsGroundDetected())
         {
-            stateMachine.ChangeState(player.wallSlideState);
+            stateMachine.ChangeState(player.wallSlide);
         }
 
         if (stateTimer < 0)
