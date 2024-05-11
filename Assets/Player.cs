@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
             dashUsageTimer = dashCooldown;
             dashDir = Input.GetAxisRaw("Horizontal");
 
-            if(dashDir ==0)
+            if(dashDir == 0)
             {
                 dashDir = facingDir;
             }

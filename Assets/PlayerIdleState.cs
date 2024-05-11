@@ -24,14 +24,12 @@ public class PlayerIdleState : PlayerGroundState
         base.Update();
 
         if(xInput == player.facingDir && player.isWallDetected())
-        {
-            Debug.Log("realy return from idle staet");
+        { 
             return;
         }
 
         else if (xInput != 0)
         {
-            Debug.Log("somehow still entereing move");
             stateMachine.ChangeState(player.moveState);
         }
         
