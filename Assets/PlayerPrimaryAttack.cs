@@ -22,8 +22,8 @@ public class PlayerPrimaryAttack : PlayerState
         {
             comboCounter = 0;
         }
-
-        Debug.Log(comboCounter);
+        //Debug.Log(comboCounter);
+        player.anim.SetInteger("ComboCounter", comboCounter);
     }
 
     public override void Exit()
@@ -41,6 +41,7 @@ public class PlayerPrimaryAttack : PlayerState
 
         if(triggerCalled)
         {
+            //Debug.Log("trigger called, changing from attack to idle");
             stateMachine.ChangeState(player.idleState);
         }
     }
