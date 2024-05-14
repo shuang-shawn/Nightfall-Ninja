@@ -11,7 +11,7 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        rb.velocity = Vector2.zero;
+        player.ZeroVelocity();
     }
 
     public override void Exit()
@@ -28,7 +28,7 @@ public class PlayerIdleState : PlayerGroundState
             return;
         }
 
-        else if (xInput != 0)
+        else if (xInput != 0 && !player.isBusy)
         {
             stateMachine.ChangeState(player.moveState);
         }

@@ -15,6 +15,7 @@ public class PlayerMoveState : PlayerGroundState
 
     public override void Exit()
     {
+        player.SetVelocity(0, rb.velocity.y);
         base.Exit();
     }
 

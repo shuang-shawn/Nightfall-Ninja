@@ -22,26 +22,33 @@ public class PlayerPrimaryAttack : PlayerState
         {
             comboCounter = 0;
         }
-        //Debug.Log(comboCounter);
         player.anim.SetInteger("ComboCounter", comboCounter);
+
+        player.SetVelocity(player.attackMovement[comboCounter].x * player.facingDir, player.attackMovement[comboCounter].y);
+
+        stateTimer = 0.1f;
+        
     }
 
     public override void Exit()
     {
         base.Exit();
 
+        player.StartCoroutine("BusyFor", .2f);
         comboCounter++;
-        lastTimeAttacked = Time.time;
-        Debug.Log(lastTimeAttacked);
+        lastTimeAttacked = Time.time;    
     }
 
     public override void Update()
     {
         base.Update();
-
-        if(triggerCalled)
+        if(stateTimer < 0 )
         {
-            //Debug.Log("trigger called, changing from attack to idle");
+            player.ZeroVelocity();
+        }
+
+        if (triggerCalled)
+        {
             stateMachine.ChangeState(player.idleState);
         }
     }
